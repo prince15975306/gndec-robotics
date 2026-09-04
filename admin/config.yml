@@ -6,23 +6,28 @@ media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
 collections:
-  - name: "pages"
-    label: "Site Pages"
+  - name: "site_content"
+    label: "Website Content"
     files:
       - file: "index.html"
-        label: "Home Page Content"
+        label: "Home Page"
         name: "home"
         fields:
-          - {label: "Club Logo", name: "logo", widget: "image"}
+          - {label: "Club Logo URL", name: "logo", widget: "image"}
           - {label: "Hero Title", name: "hero_title", widget: "string"}
           - {label: "Hero Subtitle", name: "hero_subtitle", widget: "text"}
-          - {label: "Notice Board Items", name: "notices", widget: "list", fields: [{label: "Notice Text", name: "notice_text", widget: "string"}]}
+          - label: "Notice Board Items"
+            name: "notices"
+            widget: "list"
+            fields:
+              - {label: "Notice Text", name: "text", widget: "string"}
+              - {label: "Link / Action URL", name: "link", widget: "string", required: false}
           - {label: "About Us Text", name: "about_text", widget: "text"}
           - {label: "Vision Text", name: "vision_text", widget: "text"}
           - {label: "Mission Text", name: "mission_text", widget: "text"}
 
   - name: "events"
-    label: "Club Events"
+    label: "Robotics Events"
     folder: "_posts/events"
     create: true
     fields:
