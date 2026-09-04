@@ -1,0 +1,32 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "pages"
+    label: "Site Pages"
+    files:
+      - file: "index.html"
+        label: "Home Page Content"
+        name: "home"
+        fields:
+          - {label: "Club Logo", name: "logo", widget: "image"}
+          - {label: "Hero Title", name: "hero_title", widget: "string"}
+          - {label: "Hero Subtitle", name: "hero_subtitle", widget: "text"}
+          - {label: "Notice Board Items", name: "notices", widget: "list", fields: [{label: "Notice Text", name: "notice_text", widget: "string"}]}
+          - {label: "About Us Text", name: "about_text", widget: "text"}
+          - {label: "Vision Text", name: "vision_text", widget: "text"}
+          - {label: "Mission Text", name: "mission_text", widget: "text"}
+
+  - name: "events"
+    label: "Club Events"
+    folder: "_posts/events"
+    create: true
+    fields:
+      - {label: "Event Title", name: "title", widget: "string"}
+      - {label: "Event Date", name: "date", widget: "date"}
+      - {label: "Event Banner Image", name: "image", widget: "image"}
+      - {label: "Description", name: "body", widget: "markdown"}
