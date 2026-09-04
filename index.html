@@ -1,161 +1,215 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Robotics Club — GNDEC Ludhiana</title>
-  <meta name="description" content="The Robotics Club of Guru Nanak Dev Engineering College. Build. Code. Innovate.">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GNDEC Robotics Club | Cyber Core</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <!-- Netlify Identity Widget for Admin Login -->
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #050508;
+      --panel-bg: #0f0e17;
+      --neon-cyan: #00f0ff;
+      --neon-purple: #b000ff;
+      --text-main: #f0f0f5;
+      --text-muted: #a0a0b0;
+    }
+
+    * { box-sizing: border-box; scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    /* Header & Navigation */
+    header {
+      background: rgba(15, 14, 23, 0.9);
+      border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+    }
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+    }
+    .site-brand {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .site-logo img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 2px solid var(--neon-cyan);
+      object-fit: cover;
+    }
+    .site-title {
+      font-family: 'Bruno Ace SC', cursive;
+      font-size: 1.4rem;
+      color: var(--neon-cyan);
+      text-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
+    }
+    .menu {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+    .menu a {
+      color: var(--text-main);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+    .menu a:hover {
+      color: var(--neon-cyan);
+      text-shadow: 0 0 8px var(--neon-cyan);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 100px 20px;
+      text-align: center;
+      background: radial-gradient(circle at center, #1a102f 0%, var(--bg-color) 70%);
+      border-bottom: 1px solid rgba(176, 0, 255, 0.2);
+    }
+    .hero h1 {
+      font-family: 'Bruno Ace SC', cursive;
+      font-size: 3rem;
+      color: #fff;
+      margin-bottom: 20px;
+      text-shadow: 0 0 20px var(--neon-purple);
+    }
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      max-width: 700px;
+      margin: 0 auto 30px auto;
+    }
+
+    /* Container layout */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    /* Notice Board & Sections */
+    .grid-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+    @media(max-width: 768px) {
+      .grid-section { grid-template-columns: 1fr; }
+    }
+    .card-panel {
+      background: var(--panel-bg);
+      border: 1px solid rgba(0, 240, 255, 0.2);
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    }
+    .card-panel h2 {
+      font-family: 'Bruno Ace SC', cursive;
+      color: var(--neon-cyan);
+      margin-top: 0;
+      font-size: 1.5rem;
+      border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+      padding-bottom: 10px;
+    }
+
+    /* Notice Board List */
+    .notice-list {
+      list-style: none;
+      padding: 0;
+      max-height: 280px;
+      overflow-y: auto;
+    }
+    .notice-list li {
+      padding: 10px 0;
+      border-bottom: 1px dashed rgba(255,255,255,0.1);
+      font-size: 0.95rem;
+    }
+    .notice-list li a {
+      color: var(--neon-cyan);
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    footer {
+      background: #030305;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      text-align: center;
+      padding: 30px 20px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
 <body>
 
-  <!-- FEATURE 3: Live Cyberpunk Notice Ticker -->
-  <div class="notice-ticker">
-    <div class="ticker-track">
-      <span>⚡ SYSTEM STATUS: ONLINE &amp; OPERATIONAL</span>
-      <span>&bull;</span>
-      <span>🤖 RECRUITMENT FOR 2026 BATCH OPEN SOON</span>
-      <span>&bull;</span>
-      <span>🛠️ CHECK ADMIN PANEL FOR UPCOMING WORKSHOP SCHEDULES</span>
-    </div>
-  </div>
-
-  <!-- NAVIGATION -->
-  <header class="site-nav">
-    <div class="wrap nav-inner">
-      <a href="#top" class="logo">
-        <span class="l1">GNDEC · LUDHIANA</span>
-        <span class="l2">ROBOTICS CLUB</span>
-      </a>
-      <nav class="links">
-        <a href="#about">About</a>
-        <a href="#history">History &amp; Events</a>
-        <a href="#admin-login" onclick="netlifyIdentity.open()" class="admin-link">Admin Portal</a>
-        <a href="#join" class="cta-btn">Join Us</a>
+  <header>
+    <div class="header-container">
+      <div class="site-brand">
+        <div class="site-logo">
+          <a href="/"><img src="https://via.placeholder.com/150" alt="Robotics Logo" id="brand-logo" /></a>
+        </div>
+        <div class="site-title">GNDEC ROBOTICS</div>
+      </div>
+      <nav>
+        <ul class="menu">
+          <li><a href="/">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#notices">Notice Board</a></li>
+          <li><a href="/admin">Admin Portal</a></li>
+        </ul>
       </nav>
     </div>
   </header>
 
-  <main id="top">
-    <!-- HERO SECTION -->
-    <section class="hero">
-      <div class="wrap hero-grid">
-        <div class="hero-text">
-          <span class="sheet-tag">SHEET 00 / INTRO</span>
-          <div class="club-mark">GNDEC / R&amp;D LAB</div>
-          <h1>ROBOTICS<br>CLUB</h1>
-          <div class="hero-motto">
-            <span>BUILD.</span><span>CODE.</span><span>INNOVATE.</span>
-          </div>
-          <p class="lede">A next-generation student community at Guru Nanak Dev Engineering College. Prototyping hardware, writing embedded systems, and engineering the future.</p>
-          <div class="btn-row">
-            <a href="#history" class="btn btn-outline">Explore Timeline</a>
-            <a href="#join" class="btn btn-solid">Become a Member</a>
-          </div>
-        </div>
-
-        <!-- FEATURE 4: Interactive Robotic Schematic / Blueprint Wireframe -->
-        <div class="hero-art">
-          <div class="blueprint-frame">
-            <svg viewBox="0 0 400 350" fill="none" stroke="currentColor" stroke-width="1.5">
-              <!-- Grid background lines -->
-              <path d="M0 70h400M0 140h400M0 210h400M0 280h400M80 0v350M160 0v350M240 0v350M320 0v350" stroke="rgba(0,255,204,0.08)" stroke-width="1"/>
-              <!-- Robotic Arm Graphic -->
-              <rect x="100" y="260" width="200" height="20" rx="2" fill="rgba(0,255,204,0.05)" stroke-width="2"/>
-              <rect x="180" y="160" width="40" height="100" stroke-width="2"/>
-              <circle cx="200" cy="160" r="16" fill="#0d0d0d" stroke-width="2"/>
-              <line x1="200" y1="160" x2="280" y2="100" stroke-width="6" stroke-linecap="round"/>
-              <circle cx="280" cy="100" r="12" fill="#0d0d0d" stroke-width="2"/>
-              <line x1="280" y1="100" x2="330" y2="130" stroke-width="4" stroke-linecap="round"/>
-              <!-- Crosshair accents -->
-              <path d="M50 50h10M50 50v10M350 50h-10M350 50v10" stroke="#00ffcc" stroke-width="2"/>
-              <text x="60" y="45" fill="#00ffcc" font-family="monospace" font-size="10">SYS.ARM.01</text>
-            </svg>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ABOUT SECTION -->
-    <section id="about" class="section">
-      <div class="wrap">
-        <div class="section-head">
-          <span class="sheet-tag">SHEET 01 / ABOUT</span>
-          <h2>The R&amp;D Lab Philosophy</h2>
-        </div>
-        <div class="about-grid">
-          <div class="about-card">
-            <h3>Hands-On Hardware</h3>
-            <p>We believe engineering isn't learned from textbooks alone. We work directly with microcontrollers, sensors, custom PCBs, and mechanical fabrication.</p>
-          </div>
-          <div class="about-card">
-            <h3>Cross-Branch Collaboration</h3>
-            <p>Mechanical, Electronics, and Computer Science students unite under one roof to build complete, functional autonomous systems.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FEATURE 2: Interactive Multi-Year History & Events Timeline -->
-    <section id="history" class="section alt-bg">
-      <div class="wrap">
-        <div class="section-head">
-          <span class="sheet-tag">SHEET 02 / HISTORY &amp; TIMELINE</span>
-          <h2>Chronicles &amp; Milestones</h2>
-          <p class="sub">Permanent records of every build, competition, and year of innovation.</p>
-        </div>
-
-        <div class="timeline-container" id="historyContainer">
-          <!-- CMS content items dynamically inject here -->
-          <div class="timeline-item">
-            <span class="t-year">2026</span>
-            <div class="t-content">
-              <h3>Club Inception &amp; Portal Launch</h3>
-              <p>The official foundation of the Robotics Club at GNDEC, establishing a standard for autonomous student engineering.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- JOIN SECTION -->
-    <section id="join" class="section">
-      <div class="wrap">
-        <div class="section-head">
-          <span class="sheet-tag">SHEET 03 / RECRUITMENT</span>
-          <h2>Join the Roster</h2>
-        </div>
-        <div class="join-box">
-          <p>Ready to build real machines? Reach out to our core committee or log into the portal to check active cohort openings.</p>
-          <a href="mailto:robotics.club@gndec.ac.in" class="btn btn-solid">Contact via Email</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="wrap footer-flex">
-      <span>© 2026 Robotics Club, GNDEC Ludhiana. All systems go.</span>
-      <span class="footer-tag">SECURE CLOUD DEPLOYMENT</span>
+  <section class="hero">
+    <div class="container">
+      <h1 id="hero-title">Engineering the Future</h1>
+      <p id="hero-subtitle">Welcome to the official portal of the GNDEC Robotics Club. Innovating automated systems, building hardware excellence, and fostering a technical revolution.</p>
     </div>
+  </section>
+
+  <div class="container">
+    <div class="grid-section">
+      <!-- Notice Board -->
+      <div class="card-panel" id="notices">
+        <h2>Notice Board</h2>
+        <ul class="notice-list">
+          <li>🚀 Robotics Recruitment 2026 is officially live! Check out the details.</li>
+          <li>⚡ BotWars Workshop registration starting this Monday.</li>
+        </ul>
+      </div>
+
+      <!-- Vision & Mission -->
+      <div class="card-panel">
+        <h2>Vision & Mission</h2>
+        <p><strong>Vision:</strong> To cultivate an environment of mechanical and algorithmic intelligence, driving high-impact student innovation.</p>
+        <p><strong>Mission:</strong> To provide hands-on platforms, workshops, and hardware resources empowering engineers to build real-world automation solutions.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 GNDEC Robotics Club. All rights reserved. | Powered by Decap CMS & Netlify.</p>
   </footer>
 
-  <script>
-    // Handles redirection back to /admin/ after Netlify Identity authentication login
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.on("init", user => {
-        if (!user) {
-          window.netlifyIdentity.on("login", () => {
-            document.location.href = "/admin/";
-          });
-        }
-      });
-    }
-  </script>
 </body>
 </html>
