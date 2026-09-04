@@ -1,0 +1,18 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "events"
+    label: "History & Events"
+    folder: "_posts/events"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Event Title", name: "title", widget: "string"}
+      - {label: "Year / Date", name: "date", widget: "string", hint: "e.g., 2022, 2023, 2024"}
+      - {label: "Event Image", name: "image", widget: "image", required: false}
+      - {label: "Description", name: "body", widget: "markdown"}
